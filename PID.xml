@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="PID" inherits="Node" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="update">
+			<return type="float" />
+			<param index="0" name="current_value" type="float" />
+			<param index="1" name="target_value" type="float" />
+			<param index="2" name="delta" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="update_angle">
+			<return type="float" />
+			<param index="0" name="current_angle" type="float" />
+			<param index="1" name="target_angle" type="float" />
+			<param index="2" name="delta" type="float" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="derivative_gain" type="float" setter="set_derivative_gain" getter="get_derivative_gain" default="0.5">
+		</member>
+		<member name="integral_gain" type="float" setter="set_integral_gain" getter="get_integral_gain" default="0.0">
+		</member>
+		<member name="integral_saturation" type="float" setter="set_integral_saturation" getter="get_integral_saturation" default="0.0">
+		</member>
+		<member name="output_max" type="float" setter="set_output_max" getter="get_output_max" default="1.0">
+		</member>
+		<member name="output_min" type="float" setter="set_output_min" getter="get_output_min" default="-1.0">
+		</member>
+		<member name="proportional_gain" type="float" setter="set_proportional_gain" getter="get_proportional_gain" default="1.0">
+		</member>
+	</members>
+</class>

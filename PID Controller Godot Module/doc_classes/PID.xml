@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="PID" inherits="Node" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	A PID Controller Node. Good for controlling RigidBodies.
+	</brief_description>
+	<description>
+	P.I.D. proportional, integral, derivative. Both node methods ([method update] and [method update_angle]) use a current value and a target value to find a value that moves current value closer to target value accounting for forces interacting with the current value. One method is made to compare angles ([method update_angle]) and another for normal numbers ([method update]). This works great for controlling forces on RigidBodies to control their movement. It will account for any other forces interacting with the RigidBody.
+
+	The output is clamped between -1 and 1 (that can be changed). Before the output is applied to a RigidBody, it usually needs to be multiplied by the RigidBody's maneuverability.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="update">
+			<return type="float" />
+			<param index="0" name="current_value" type="float" />
+			<param index="1" name="target_value" type="float" />
+			<param index="2" name="delta" type="float" />
+			<description>
+			Use if you have current and target values that are not angles. If you are comparing angles use [method update_angle].
+			</description>
+		</method>
+		<method name="update_angle">
+			<return type="float" />
+			<param index="0" name="current_angle" type="float" />
+			<param index="1" name="target_angle" type="float" />
+			<param index="2" name="delta" type="float" />
+			<description>
+			Use this if you are calculating an current angle value and target angle. Other numbers can be compared with [method update].
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="derivative_gain" type="float" setter="set_derivative_gain" getter="get_derivative_gain" default="0.5">
+			This is the D part of PID. The derivative helps prevent overshooting the target value. How smooth the stop depends on the value its set at.
+		</member>
+		<member name="integral_gain" type="float" setter="set_integral_gain" getter="get_integral_gain" default="0.0">
+			I . . . the integral. It helps account for constant forces.
+		</member>
+		<member name="integral_saturation" type="float" setter="set_integral_saturation" getter="get_integral_saturation" default="0.0">
+			Unfortunately I don't know what this one does, except it interacts with [integral_gain] in the source code.
+		</member>
+		<member name="output_max" type="float" setter="set_output_max" getter="get_output_max" default="1.0">
+			The output of [update()] and [update_angle()] will be clamped using this value as the maximum.
+		</member>
+		<member name="output_min" type="float" setter="set_output_min" getter="get_output_min" default="-1.0">
+			The output of [update()] and [update_angle()] will be clamped using this value as the minimum.
+		</member>
+		<member name="proportional_gain" type="float" setter="set_proportional_gain" getter="get_proportional_gain" default="1.0">
+			P part of PID. If you were using it for calculating thrust, this number would represent the maximum thrust output.
+		</member>
+	</members>
+</class>
