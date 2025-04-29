@@ -3,6 +3,6 @@ TypicalRenegade@proton.me
 
 Ported from https://gist.github.com/mattogodoy/910ef7612950161f4a9871c09b62fec7. Originally in GDScript.
 
-Complete working PID controller module for the Godot Game Engine.
+Complete working PID controller module for the Godot Game Engine version 4.0 or higher.
 
 Docs included.
