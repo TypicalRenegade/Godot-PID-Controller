@@ -10,6 +10,7 @@ runs:
     - name: Download and extract Godot
       shell: bash
       run: |
+        rm -R ./"PID Controller Godot Module"
         ls
         ls >> output.txt
         mkdir pid
@@ -22,7 +23,6 @@ runs:
         echo " -------- "
         mv pid ./modules/pid
         echo " -------- "
-        rm -R ./"PID Controller Godot Module"
         tree -L 1
         echo " -------- "
         ls ./modules
