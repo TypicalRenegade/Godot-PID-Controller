@@ -12,16 +12,17 @@ runs:
       run: |
         ls
         ls >> output.txt
-        mkdir PID
-        cat output.txt | awk '{system("mv " $0 " ./PID")}'
+        mkdir pid
+        cat output.txt | awk '{system("mv " $0 " ./pid")}'
         tree
         echo " ------ "
         ls
         curl -fLO https://github.com/godotengine/godot/archive/${{ inputs.version }}.tar.gz
         tar -xvzf ${{ inputs.version }}.tar.gz --strip-components 1 --exclude=".github"
         echo " -------- "
-        mv PID ./modules/PID
+        mv pid ./modules/pid
         echo " -------- "
+        rm -R ./"PID Controller Godot Module"
         tree -L 1
         echo " -------- "
         ls ./modules
