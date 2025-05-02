@@ -11,23 +11,12 @@ runs:
       shell: bash
       run: |
         rm -R ./"PID Controller Godot Module"
-        ls
         ls >> output.txt
         mkdir pid
         cat output.txt | awk '{system("mv " $0 " ./pid")}'
-        tree
-        echo " ------ "
-        ls
         curl -fLO https://github.com/godotengine/godot/archive/${{ inputs.version }}.tar.gz
         tar -xvzf ${{ inputs.version }}.tar.gz --strip-components 1 --exclude=".github"
-        echo " -------- "
         mv pid ./modules/pid
-        echo " -------- "
-        tree -L 1
-        echo " -------- "
-        ls ./modules
-        echo " -------- "
-        ls -la
 
 
     # Custom steps to download and moving sg-physics to the modules folder. 
