@@ -49,6 +49,7 @@ jobs:
       - id: godot
         uses: pozetroninc/github-action-get-latest-release@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: godotengine
           repo: godot
           
@@ -217,6 +218,7 @@ jobs:
       - id: godot
         uses: pozetroninc/github-action-get-latest-release@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: godotengine
           repo: godot
         
@@ -422,6 +424,7 @@ jobs:
       - id: godot
         uses: pozetroninc/github-action-get-latest-release@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: godotengine
           repo: godot
       
@@ -756,6 +759,7 @@ jobs:
       - id: godot
         uses: pozetroninc/github-action-get-latest-release@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: godotengine
           repo: godot
       
@@ -1154,6 +1158,7 @@ jobs:
       - id: godot
         uses: pozetroninc/github-action-get-latest-release@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: godotengine
           repo: godot
 
@@ -1310,6 +1315,7 @@ jobs:
       - id: godot
         uses: pozetroninc/github-action-get-latest-release@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: godotengine
           repo: godot
       
@@ -1461,6 +1467,7 @@ jobs:
       - id: godot
         uses: pozetroninc/github-action-get-latest-release@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           owner: godotengine
           repo: godot
 
