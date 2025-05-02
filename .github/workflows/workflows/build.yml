@@ -1,3 +1,4 @@
+
 name: 🛠️ Godot Engine Builds
 on:
   # Schedule updates (once every month)
@@ -18,7 +19,7 @@ on:
 # SCONS_CACHE for windows must be set in the build environment
 env:
   # Used for cache key as well as for downloading the correct Godot version.
-  GODOT_BASE_VERSION: 3.5
+  #GODOT_BASE_VERSION: 4.4
   GODOT_BASE_VERSION_STATUS: stable
   GODOT_VERSION_STATUS: custom
   GODOT_MONO_BUILD_TAG: release-5299efd # mono-6.12.0.182
@@ -44,13 +45,25 @@ jobs:
             build-mono: true
 
     steps:
+      # Got Latest Godot Release
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+          
       # region Setup
       - uses: actions/checkout@v3
 
       - name: Download Godot
+        #shell: bash
+        #run: |
+        #  curl -fLO https://github.com/godotengine/godot/archive/${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}.tar.gz
+        #  tar -xvzf ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}.tar.gz --strip-components 1 --exclude=".github"
+        
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Setup Godot build cache
         uses: ./.github/actions/godot-cache
@@ -200,10 +213,17 @@ jobs:
       # region Setup
       - uses: actions/checkout@v3
 
+       # Got Latest Godot Release
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+        
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -397,11 +417,18 @@ jobs:
     steps:
       # region Setup
       - uses: actions/checkout@v3
-
+      
+      # Got Latest Godot Release
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+      
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -522,10 +549,17 @@ jobs:
       # region Setup
       - uses: actions/checkout@v3
 
+       #     Got Latest Godot Release
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+      
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -718,10 +752,17 @@ jobs:
       # region Setup
       - uses: actions/checkout@v3
 
+       # Got Latest Godot Release
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+      
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Setup Godot build cache
         uses: ./.github/actions/godot-cache
@@ -910,7 +951,7 @@ jobs:
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -1109,10 +1150,17 @@ jobs:
       # region Setup
       - uses: actions/checkout@v3
 
+       # Got Latest Godot Release
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -1258,10 +1306,17 @@ jobs:
       # region Setup
       - uses: actions/checkout@v3
 
+       # Got Latest Godot Release
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+      
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -1402,10 +1457,17 @@ jobs:
       # region Setup
       - uses: actions/checkout@v3
 
+       # Got Latest Godot Release
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ env.GODOT_BASE_VERSION }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       # region    Download Templates
       - name: Download Linux Templates (bits=64)
@@ -1480,10 +1542,10 @@ jobs:
       # endregion
       - name: Setup ENV Vars
         run: |
-          echo "TEMPLATES_VERSION=${{ format('{0}.{1}', env.GODOT_BASE_VERSION, env.GODOT_VERSION_STATUS) }}${{ matrix.build-mono && '.mono' || '' }}" >> $GITHUB_ENV
+          echo "TEMPLATES_VERSION=${{ format('{0}.{1}', steps.godot.outputs.release, env.GODOT_VERSION_STATUS) }}${{ matrix.build-mono && '.mono' || '' }}" >> $GITHUB_ENV
 
           echo "RELDIR=$HOME/releases" >> $GITHUB_ENV
-          echo "GODOT_BASENAME=Godot_v${{ format('{0}-{1}', env.GODOT_BASE_VERSION, env.GODOT_VERSION_STATUS) }}" >> $GITHUB_ENV
+          echo "GODOT_BASENAME=Godot_v${{ format('{0}-{1}', steps.godot.outputs.release, env.GODOT_VERSION_STATUS) }}" >> $GITHUB_ENV
           echo "TEMPLATES_DIR=$HOME/templates" >> $GITHUB_ENV
 
       - name: Setup Directories
@@ -1681,7 +1743,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ needs.create-release.outputs.tag }}
-          files: ./Godot_v${{ format('{0}-{1}', env.GODOT_BASE_VERSION, env.GODOT_VERSION_STATUS) }}_${{ matrix.artifact_name }}.tpz
+          files: ./Godot_v${{ format('{0}-{1}', steps.godot.outputs.release, env.GODOT_VERSION_STATUS) }}_${{ matrix.artifact_name }}.tpz
 
   upload-release-artifacts:
     if: success() && (
@@ -1760,3 +1822,4 @@ jobs:
         with:
           tag_name: ${{ needs.create-release.outputs.tag }}
           files: ./${{ matrix.artifact_name }}.zip
+
