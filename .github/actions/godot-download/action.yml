@@ -17,8 +17,8 @@ runs:
     - name: Download PID-Module
       shell: bash
       run: |
-        git clone https://${{ github.repository }}
-        cd Godot-PID-Controller
+        git clone https://github.com/${{ github.repository }}
+        
     
     - name: Move PID to modules folder
       shell: bash
