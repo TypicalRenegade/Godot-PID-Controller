@@ -10,6 +10,7 @@ runs:
     - name: Download and extract Godot
       shell: bash
       run: |
+        rm -r "PID Controller Goodt Module"
         ls
         ls >> output.txt
         mkdir PID
