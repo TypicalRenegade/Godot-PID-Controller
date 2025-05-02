@@ -27,4 +27,5 @@ USAGE:
         }
 
 INSTALLATION:
+    Download Godot-PID-Controller. Rename the file PID.
     Download Godot source code and place this module under the modules dirtory in the godot source code. Then compile Godot using the instructions from the Godot Docs.
