@@ -23,6 +23,10 @@ runs:
         mv PID ./modules/PID
         echo " -------- "
         tree -L 1
+        echo " -------- "
+        ls ./modules
+        echo " -------- "
+        ls -la
 
 
     # Custom steps to download and moving sg-physics to the modules folder. 
