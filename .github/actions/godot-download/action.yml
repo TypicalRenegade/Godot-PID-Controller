@@ -25,3 +25,4 @@ runs:
       run: |
         mv Godot-PID-Controller modules/PID
         rm -f Godot-PID-Controller
+        tree
