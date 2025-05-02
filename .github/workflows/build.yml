@@ -64,7 +64,7 @@ jobs:
         
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Setup Godot build cache
         uses: ./.github/actions/godot-cache
@@ -225,7 +225,7 @@ jobs:
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -431,7 +431,7 @@ jobs:
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -562,7 +562,7 @@ jobs:
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -766,7 +766,7 @@ jobs:
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Setup Godot build cache
         uses: ./.github/actions/godot-cache
@@ -952,10 +952,16 @@ jobs:
       # region Setup
       - uses: actions/checkout@v3
 
+      - id: godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: godotengine
+          repo: godot
+      
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -1165,7 +1171,7 @@ jobs:
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -1322,7 +1328,7 @@ jobs:
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       - name: Linux dependencies
         shell: bash
@@ -1474,7 +1480,7 @@ jobs:
       - name: Download Godot
         uses: ./.github/actions/godot-download
         with:
-          version: ${{ steps.godot.outputs.release }}-${{ env.GODOT_BASE_VERSION_STATUS }}
+          version: ${{ steps.godot.outputs.release }} #-${{ env.GODOT_BASE_VERSION_STATUS }}
 
       # region    Download Templates
       - name: Download Linux Templates (bits=64)
