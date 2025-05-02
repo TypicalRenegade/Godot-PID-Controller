@@ -10,12 +10,13 @@ runs:
     - name: Download and extract Godot
       shell: bash
       run: |
-        touch output.txt
         ls
         ls >> output.txt
         mkdir PID
         cat output.txt | awk '{system("mv " $0 " ./PID")}'
         tree
+        echo " ------ "
+        ls
         curl -fLO https://github.com/godotengine/godot/archive/${{ inputs.version }}.tar.gz
         tar -xvzf ${{ inputs.version }}.tar.gz --strip-components 1 --exclude=".github"
 
@@ -24,4 +25,6 @@ runs:
       shell: bash
       run: |
         git clone https://github.com/${{ github.repository }}
+        tree -L 2
+        mv ./PID ./modules
 
