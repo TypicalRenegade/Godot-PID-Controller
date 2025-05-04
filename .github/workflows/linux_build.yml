@@ -4,6 +4,13 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
+    inputs:
+        make-release:
+            description: "Make release"
+            required: false
+            type: boolean
+            default: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

@@ -1,19 +1,19 @@
 
 name: 🛠️ Godot Engine Builds
-on:
+#on:
   # Schedule updates (once every month)
   #schedule:
     #- cron: "0 0 1 * *"
-  workflow_dispatch:
-    inputs:
-      make-release:
-        description: "Make release"
-        required: false
-        type: boolean
-        default: true
-  push:
-    branches:
-      - main
+  #workflow_dispatch:
+  #  inputs:
+  #    make-release:
+  #      description: "Make release"
+  #      required: false
+  #      type: boolean
+  #      default: true
+  #push:
+  #  branches:
+  #    - main
 
 # Global Settings
 # SCONS_CACHE for windows must be set in the build environment
