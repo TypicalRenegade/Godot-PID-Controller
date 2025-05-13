@@ -1,5 +1,7 @@
 name: 🐧 Linux Builds
 on:
+  schedule:
+    - cron: "0 0 1 * *"
   push:
     branches: [ master ]
   pull_request:
@@ -7,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
         make-release:
-            description: "Make release"
+            description: "Make Linux Release"
             required: false
             type: boolean
             default: true
@@ -89,39 +91,73 @@ jobs:
 
           # --- Builds with artifacts ---
 
-          - name: 4.4.1 Editor
+        #  - name: 4.4.1 Editor
+         #   precision: single
+         #   target: editor
+         #   production: yes
+         #   executable_name: godot.linuxbsd.editor.x86_64
+         #   godot_base_branch: "4.4.1-stable"
+         #   warnings: extra
+         #   werror: yes
+
+         # - name: 4.4.1 Template
+         #   precision: single
+         #   target: template_release
+         #   production: yes
+         #   executable_name: godot.linuxbsd.template_release.x86_64
+         #   godot_base_branch: "4.4.1-stable"
+         #   warnings: extra
+         #   werror: yes
+
+         # - name: 4.4.1 Editor Float64
+         #   precision: double
+         #   target: editor
+         #   production: yes
+         #   executable_name: godot.linuxbsd.editor.double.x86_64
+         #   godot_base_branch: "4.4.1-stable"
+         #   warnings: extra
+         #   werror: yes
+
+          - name: Godot Editor
             precision: single
             target: editor
             production: yes
             executable_name: godot.linuxbsd.editor.x86_64
-            godot_base_branch: "4.4.1-stable"
+            #godot_base_branch: "4.4.1-stable"
             warnings: extra
             werror: yes
 
-          - name: 4.4.1 Template
+          - name: Godot Template
             precision: single
             target: template_release
             production: yes
             executable_name: godot.linuxbsd.template_release.x86_64
-            godot_base_branch: "4.4.1-stable"
+            #godot_base_branch: "4.4.1-stable"
             warnings: extra
             werror: yes
 
-          - name: 4.4.1 Editor Float64
+          - name: Godot Editor Float64
             precision: double
             target: editor
             production: yes
             executable_name: godot.linuxbsd.editor.double.x86_64
-            godot_base_branch: "4.4.1-stable"
+            #godot_base_branch: "4.4.1-stable"
             warnings: extra
             werror: yes
 
     steps:
+      - id: Latest-Godot
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: godotengine
+          repo: godot
+
       # Clone Godot
       - uses: actions/checkout@v4
         with:
           repository: godotengine/godot
-          ref: ${{ matrix.godot_base_branch }}
+          ref: ${{ steps.Latest-Godot.outputs.release }} # ${{ matrix.godot_base_branch }}
 
       # Clone our module under the correct directory
       - uses: actions/checkout@v4
