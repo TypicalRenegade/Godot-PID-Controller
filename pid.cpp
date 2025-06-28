@@ -154,7 +154,7 @@ void PID::_bind_methods() {
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "proportional_gain", PROPERTY_HINT_RANGE, "0,1,0.1"), "set_proportional_gain", "get_proportional_gain");
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "integral_gain", PROPERTY_HINT_RANGE, "0, 1, 0.1"), "set_integral_gain", "get_integral_gain");
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "derivative_gain", PROPERTY_HINT_RANGE, "0, 1, 0.1"), "set_derivative_gain", "get_derivative_gain");
-    ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "output_min", PROPERTY_HINT_RANGE, "-1, -2000, 0.1"), "set_output_min", "get_output_min");
+    ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "output_min", PROPERTY_HINT_RANGE, "-2000, -1, 0.1"), "set_output_min", "get_output_min");
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "output_max", PROPERTY_HINT_NONE, "1, 2000, 0.1"), "set_output_max", "get_output_max");
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "integral_saturation", PROPERTY_HINT_NONE), "set_integral_saturation", "get_integral_saturation");
 
